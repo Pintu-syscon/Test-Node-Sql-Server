@@ -1,12 +1,12 @@
 const express = require('express')
 const PORT = process.env.PORT || 4000
+const db = require('./config/database.config.js');
 
 const app = express()
 
 app.use(express.json())
 require('./config/cors.config.js')(app);
 require('./config/route.config.js')(app)
-const db = require('./config/database.config.js');
 
 
 db.sequelize.sync().then(() => {
